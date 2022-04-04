@@ -1,0 +1,30 @@
+@import 'vars';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: $white;
+}
+html{
+    height: 100vh;
+}
+@import 'header';
+
+main{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        display: inline;
+        margin-bottom: 1rem;
+    }
+    p{
+        display: inline;
+        margin-bottom: 1rem;
+    }
+}
+
+@import 'footer';

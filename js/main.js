@@ -4,34 +4,41 @@
 let resultado = [];
 let valorPractica;
 let coseguro;
-let cantidadPractica = confirm("Tiene prácticas para autorizar?")//parseInt(prompt("Ingrese el valor indicado debajo si quiere calcular prácticas. \n\n1. Si \n2.No"));
+let valorCoseguro = 0;
+let cantidadPractica = confirm("Tiene prácticas para autorizar?");
 let parcial;
-
-//agregar resta de coseguros
-function restaCoseguro() {
-    coseguro = confirm("La práctica tiene coseguro?")
-    if (coseguro){
-        coseguro = parseFloat(prompt("Ingrese el valor de coseguro correspondiente"));
-        while ((isNaN(coseguro)) || (coseguro < 0)) {
-            coseguro = parseFloat(prompt("Ingrese el valor de coseguro correspondiente"));
-        }  
-        valorPractica = resultado[0].valor;
-        parcial = valorPractica - coseguro;
-    } else {
-        parcial = resultado[0].valor;
-    }
-    return parcial;
-}
+let imprimir = [];
+let codigoBuscado;
+let indice;
 
 // array de codigos
 const codigos = [];
 
+//agregar resta de coseguros
+function restaCoseguro() {
+    coseguro = confirm("Le corresponde coseguro según convenio?")
+    indice = resultado.findIndex(el => el.codigo == codigoBuscado);
+    if (coseguro){
+
+        valorCoseguro = resultado[indice].coseguro ;//parseFloat(prompt("Ingrese el valor de coseguro correspondiente"));
+        while ((isNaN(valorCoseguro)) || (valorCoseguro < 0)) {
+            valorCoseguro = parseFloat(prompt("Ingrese el valor de coseguro correspondiente"));
+        }  
+        valorPractica = resultado[indice].valor;
+        parcial = valorPractica - valorCoseguro;
+    } else {
+        parcial = resultado[indice].valor;
+    }
+    return parcial;
+}
+
 // clase de codigos con metodos de cambio de datos
 class Prestacion {
-    constructor(codigo,descripcion,valor){
+    constructor(codigo,descripcion,valor,coseguro){
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.valor = valor;
+        this.coseguro = coseguro;
     }
     modificarValorManual(){
         this.valor = parseFloat(prompt("Ingrese el nuevo valor de la práctica"));
@@ -42,36 +49,37 @@ class Prestacion {
 }
 
 function addPrestacion(){ //pido a usuario datos para agregar codigos
-    let newPrestacion = new Prestacion(prompt("Ingrese código para agregar práctica"),prompt("Ingrese la descripción"), parseFloat(prompt("Ingrese el valor de la práctica")));
+    let newPrestacion = new Prestacion(prompt("Ingrese código para agregar práctica"),prompt("Ingrese la descripción"), parseFloat(prompt("Ingrese el valor de la práctica")), parseInt(prompt("Ingrese el valor del coseguro según convenio")));
     codigos.push(newPrestacion);
 }
 
 //creo codigos por defecto armando database
-const dbPrestacion = (codigo,descripcion,valor) => { 
-    let newPrestacion = new Prestacion(codigo,descripcion,valor);
+const dbPrestacion = (codigo,descripcion,valor,coseguro) => { 
+    let newPrestacion = new Prestacion(codigo,descripcion,valor,coseguro);
     codigos.push(newPrestacion);
 }
 
-dbPrestacion("180104","Ecografia Ginecológica",200);
-dbPrestacion("180106","Ecografia Mamaria",200);
-dbPrestacion("180112","Ecografia Abdominal",200);
-dbPrestacion("180116","Ecografia Renal",200);
+dbPrestacion("180104","Ecografia Ginecológica",300,50);
+dbPrestacion("180106","Ecografia Mamaria",400,50);
+dbPrestacion("180112","Ecografia Abdominal",400,100);
+dbPrestacion("180116","Ecografia Renal",300,50);
 //fin de database
 
 if (cantidadPractica){
     do {
-        let codigoBuscado = prompt("Ingrese código de práctica");
+        codigoBuscado = prompt("Ingrese código de práctica");
         let encuentra = codigos.some(el => el.codigo == codigoBuscado);
         if (encuentra) {
             resultado.push(codigos.find(el => el.codigo == codigoBuscado));
             restaCoseguro()
-            resultado[0].modificarValor(parcial);
+            resultado[indice].modificarValor(parcial);
             cantidadPractica = confirm("Tiene otra práctica para autorizar?")
         } else {
             alert("No se encontro la práctica");
             break
         }
     } while (cantidadPractica);
+    imprimir = resultado;
     resultado = resultado.reduce((acumulador, el) => acumulador + el.valor, 0);
 }
 if (resultado > 0){

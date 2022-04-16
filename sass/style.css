@@ -28,7 +28,7 @@ header img {
   width: 20vw;
 }
 
-header .login {
+header form section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37,28 +37,8 @@ header .login {
           align-items: center;
 }
 
-header .login input {
+header form section input {
   margin: 0.5rem;
-}
-
-header .login__button {
-  list-style-type: none;
-}
-
-header .login__button li {
-  padding: 0.9rem 2rem;
-  background-color: black;
-  border-radius: 500px;
-}
-
-header .login__button li a {
-  background-color: inherit;
-  color: #EEEEEE;
-  text-decoration: none;
-}
-
-header .login__button :hover {
-  background-color: #5aa3df;
 }
 
 main {
@@ -86,6 +66,39 @@ main h1 {
 main p {
   display: inline;
   margin-bottom: 1rem;
+}
+
+/* From uiverse.io */
+button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #EEEEEE;
+  background-color: black;
+  border: none;
+  border-radius: 45px;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #5aa3df;
+  -webkit-box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+          box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  -webkit-transform: translateY(-7px);
+          transform: translateY(-7px);
+}
+
+button:active {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
 }
 
 .footer {

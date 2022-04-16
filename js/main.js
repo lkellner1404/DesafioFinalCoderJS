@@ -5,7 +5,8 @@ let resultado = [];
 let valorPractica;
 let coseguro;
 let valorCoseguro = 0;
-let cantidadPractica = confirm("Tiene prácticas para autorizar?");
+let autorizar = false
+let btnAutorizar = document.getElementById("autorizar");
 let parcial;
 let imprimir = [];
 let codigoBuscado;
@@ -65,26 +66,44 @@ dbPrestacion("180112","Ecografia Abdominal",400,100);
 dbPrestacion("180116","Ecografia Renal",300,50);
 //fin de database
 
-if (cantidadPractica){
-    do {
-        codigoBuscado = prompt("Ingrese código de práctica");
-        let encuentra = codigos.some(el => el.codigo == codigoBuscado);
-        if (encuentra) {
-            resultado.push(codigos.find(el => el.codigo == codigoBuscado));
-            restaCoseguro()
-            resultado[indice].modificarValor(parcial);
-            cantidadPractica = confirm("Tiene otra práctica para autorizar?")
-        } else {
-            alert("No se encontro la práctica");
-            break
-        }
-    } while (cantidadPractica);
-    imprimir = resultado;
-    resultado = resultado.reduce((acumulador, el) => acumulador + el.valor, 0);
-}
-if (resultado > 0){
-    alert(`El paciente debe abonar un total de $${resultado}.`)
-} else {
-    alert("El paciente no debe abonar");
-}
+btnAutorizar.addEventListener("click",() => {
+    autorizar = true;
+    if (autorizar){
+        do {
+            codigoBuscado = prompt("Ingrese código de práctica");
+            let encuentra = codigos.some(el => el.codigo == codigoBuscado);
+            if (encuentra) {
+                resultado.push(codigos.find(el => el.codigo == codigoBuscado));
+                restaCoseguro()
+                resultado[indice].modificarValor(parcial);
+                autorizar = confirm("Tiene otra práctica para autorizar?")
+            } else {
+                alert("No se encontro la práctica");
+                break
+            }
+        } while (cantidadPractica);
+        imprimir = resultado;
+        resultado = resultado.reduce((acumulador, el) => acumulador + el.valor, 0);
+    }
+    if (resultado > 0){
+        console.log(`El paciente debe abonar un total de $${resultado}.`)
+    } else {
+        console.log("El paciente no debe abonar");
+    }
+})
 
+let usuario = "";
+let username = document.querySelector("#username");
+username.onchange = () =>{usuario = username.value;}
+let loginBtn = document.getElementById("loginBtn");
+loginBtn.onclick = (e) => {
+    e.preventDefault();
+    let form = document.querySelector(".login");
+    let originalForm = document.getElementById("loginInicial")
+    let newForm = document.createElement("section");
+    newForm.setAttribute("id","loginNuevo");
+    newForm.innerHTML = `<span>Bienvenido ${usuario}</span>                         <a href="#">logout</a>`;
+    form.appendChild(newForm);
+    originalForm.style.display ="none";
+    console.log(form);
+}

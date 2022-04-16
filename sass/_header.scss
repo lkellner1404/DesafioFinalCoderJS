@@ -8,27 +8,30 @@ header {
     img {
         width: 20vw;
     }
-    .login{
-        display: flex;
-        align-items: center;
-        input{
-            margin: 0.5rem;
-        }
-        &__button{
-            list-style-type: none;
-            li{
-                padding: 0.9rem 2rem;
-                background-color: black;
-                border-radius: 500px;
-                a{
-                    background-color: inherit;
-                    color: $white;
-                    text-decoration: none;
-                }
+    form{
+        section{
+            display: flex;
+            align-items: center;
+            input{
+                margin: 0.5rem;
             }
-            :hover{
-                background-color: $blue;
-            }
+
         }
+        // &__button{
+        //     list-style-type: none;
+        //     li{
+        //         padding: 0.9rem 2rem;
+        //         background-color: black;
+        //         border-radius: 500px;
+        //         a{
+        //             background-color: inherit;
+        //             color: $white;
+        //             text-decoration: none;
+        //         }
+        //     }
+        //     :hover{
+        //         background-color: $blue;
+        //     }
+        // }
     }
 }

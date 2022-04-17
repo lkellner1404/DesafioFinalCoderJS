@@ -81,7 +81,7 @@ btnAutorizar.addEventListener("click",() => {
                 alert("No se encontro la práctica");
                 break
             }
-        } while (cantidadPractica);
+        } while (autorizar);
         imprimir = resultado;
         resultado = resultado.reduce((acumulador, el) => acumulador + el.valor, 0);
     }
@@ -102,7 +102,7 @@ loginBtn.onclick = (e) => {
     let originalForm = document.getElementById("loginInicial")
     let newForm = document.createElement("section");
     newForm.setAttribute("id","loginNuevo");
-    newForm.innerHTML = `<span>Bienvenido ${usuario}</span>                         <a href="#">logout</a>`;
+    newForm.innerHTML = `<span>Bienvenido ${usuario}</span><a href="#">logout</a>`;
     form.appendChild(newForm);
     originalForm.style.display ="none";
     console.log(form);

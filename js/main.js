@@ -19,8 +19,7 @@ function restaCoseguro() {
     let coseguro = confirm("Le corresponde coseguro según convenio?")
     indice = resultado.findIndex(el => el.codigo == codigoBuscado);
     if (coseguro){
-
-        valorCoseguro = resultado[indice].coseguro ;//parseFloat(prompt("Ingrese el valor de coseguro correspondiente"));
+        valorCoseguro = resultado[indice].coseguro ;
         while ((isNaN(valorCoseguro)) || (valorCoseguro < 0)) {
             valorCoseguro = parseFloat(prompt("Ingrese el valor de coseguro correspondiente"));
         }  
@@ -105,7 +104,6 @@ loginBtn.onclick = (e) => {
     form.appendChild(newForm);
     originalForm.style.display ="none";
     cambioMain();
-    // console.log(form);
 }
 function cambioMain(){
     let originalMain = document.getElementById("originalMain");

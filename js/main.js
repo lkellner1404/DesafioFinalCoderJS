@@ -109,22 +109,6 @@ function cambioMain(){
     let originalMain = document.getElementById("originalMain");
     originalMain.style.display = "none";
     let newMain = document.getElementById("newMain");
-    newMain.innerHTML = `
-    <form id="formPracticas">
-        <div>
-            <label>Elija las prácticas a autorizar</label>
-        </div>
-        <section class="selectorPracticas">
-            <select name="practica" class="practicas">
-                <option value="0">-</option>
-                <option value="180104">180104 - Ecografia Tocoginecologica</option>
-                <option value="180106">180106 - Ecografia Mamaria</option>
-                <option value="180112">180112 - Ecografia Abdominal</option>
-                <option value="180116">180116 - Ecografia Renal Bilateral</option>
-            </select>
-            <i class="fa-solid fa-plus"></i>
-            <i class="fa-solid fa-minus"></i>
-        </section>
-    </form>`;
+    newMain.style.display = "block";
     btnAutorizar.style.display = "inline-block";
 }

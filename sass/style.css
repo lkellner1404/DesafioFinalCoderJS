@@ -71,32 +71,16 @@ main p {
   margin-bottom: 1rem;
 }
 
-main #formPracticas label {
+main #newMain {
+  display: none;
+}
+
+main #newMain #formPracticas label {
   margin-bottom: 10px;
 }
 
-main #formPracticas section.selectorPracticas {
+main #newMain #formPracticas section.selectorPracticas {
   margin-bottom: 10px;
-}
-
-main #formPracticas section.selectorPracticas .fa-plus {
-  border: 1px solid black;
-  padding: 0.25em;
-  background-color: orangered;
-  border-radius: 100%;
-  margin: 0px 6px 0px 0px;
-  opacity: 1;
-  cursor: pointer;
-}
-
-main #formPracticas section.selectorPracticas .fa-minus {
-  border: 1px solid black;
-  padding: 0.25em;
-  background-color: lightskyblue;
-  border-radius: 100%;
-  margin: 0px 6px 0px 0px;
-  opacity: 1;
-  cursor: pointer;
 }
 
 /* From uiverse.io */
@@ -133,8 +117,47 @@ button:active {
 }
 
 button#autorizar {
-  display: none;
   margin-top: 50px;
+}
+
+button#mas {
+  color: black;
+  border: 1px solid black;
+  padding: 0.25em;
+  background-color: orangered;
+  border-radius: 100%;
+  margin: 0px 6px 0px 0px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+button#mas i {
+  background-color: inherit;
+}
+
+button#mas:hover {
+  -webkit-transform: none;
+          transform: none;
+}
+
+button#menos {
+  color: black;
+  border: 1px solid black;
+  padding: 0.25em;
+  background-color: lightskyblue;
+  border-radius: 100%;
+  margin: 0px 6px 0px 0px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+button#menos i {
+  background-color: inherit;
+}
+
+button#menos:hover {
+  -webkit-transform: none;
+          transform: none;
 }
 
 .footer {

@@ -26,17 +26,20 @@ main{
         // display: inline;
         margin-bottom: 1rem;
     }
-    #formPracticas{
-        label{
-            margin-bottom: 10px;
-        }
-        section.selectorPracticas{
-            margin-bottom: 10px;
-            .fa-plus{
-                @include iconos_mas_menos(orangered);
+    #newMain{
+        display: none;
+        #formPracticas{
+            label{
+                margin-bottom: 10px;
             }
-            .fa-minus{
-                @include iconos_mas_menos(lightskyblue);
+            section.selectorPracticas{
+                margin-bottom: 10px;
+                // .fa-plus{
+                //     @include iconos_mas_menos(orangered);
+                // }
+                // .fa-minus{
+                //     @include iconos_mas_menos(lightskyblue);
+                // }
             }
         }
     }

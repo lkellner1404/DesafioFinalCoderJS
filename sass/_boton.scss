@@ -23,7 +23,24 @@ button {
         transform: translateY(-1px);
     }
     &#autorizar{
-        display: none;
         margin-top: 50px;
+    }
+    &#mas{
+        @include iconos_mas_menos(orangered);
+        i{
+            background-color: inherit;
+        }
+        &:hover{
+            transform: none;
+        }
+    }
+    &#menos{
+        @include iconos_mas_menos(lightskyblue);
+        i{
+            background-color: inherit;
+        }
+        &:hover{
+            transform: none;
+        }
     }
 }

@@ -1,4 +1,5 @@
 @import 'vars';
+@import 'mixin';
 
 * {
     margin: 0;
@@ -18,12 +19,26 @@ main{
     justify-content: center;
     align-items: center;
     h1{
-        display: inline;
+        // display: inline;
         margin-bottom: 1rem;
     }
     p{
-        display: inline;
+        // display: inline;
         margin-bottom: 1rem;
+    }
+    #formPracticas{
+        label{
+            margin-bottom: 10px;
+        }
+        section.selectorPracticas{
+            margin-bottom: 10px;
+            .fa-plus{
+                @include iconos_mas_menos(orangered);
+            }
+            .fa-minus{
+                @include iconos_mas_menos(lightskyblue);
+            }
+        }
     }
 }
 

@@ -15,7 +15,10 @@ header {
             input{
                 margin: 0.5rem;
             }
-
+            span.welcome{
+                padding-right: 1em;
+                display: inline-block;
+            }
         }
         // &__button{
         //     list-style-type: none;

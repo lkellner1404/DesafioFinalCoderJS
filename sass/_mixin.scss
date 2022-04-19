@@ -1,0 +1,9 @@
+@mixin iconos_mas_menos($color) {
+    border: 1px solid black;
+    padding: 0.25em;
+    background-color: $color;
+    border-radius: 100%;
+    margin: 0px 6px 0px 0px;
+    opacity: 1;
+    cursor: pointer;
+}

@@ -41,6 +41,11 @@ header form section input {
   margin: 0.5rem;
 }
 
+header form section span.welcome {
+  padding-right: 1em;
+  display: inline-block;
+}
+
 main {
   text-align: center;
   display: -webkit-box;
@@ -59,13 +64,39 @@ main {
 }
 
 main h1 {
-  display: inline;
   margin-bottom: 1rem;
 }
 
 main p {
-  display: inline;
   margin-bottom: 1rem;
+}
+
+main #formPracticas label {
+  margin-bottom: 10px;
+}
+
+main #formPracticas section.selectorPracticas {
+  margin-bottom: 10px;
+}
+
+main #formPracticas section.selectorPracticas .fa-plus {
+  border: 1px solid black;
+  padding: 0.25em;
+  background-color: orangered;
+  border-radius: 100%;
+  margin: 0px 6px 0px 0px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+main #formPracticas section.selectorPracticas .fa-minus {
+  border: 1px solid black;
+  padding: 0.25em;
+  background-color: lightskyblue;
+  border-radius: 100%;
+  margin: 0px 6px 0px 0px;
+  opacity: 1;
+  cursor: pointer;
 }
 
 /* From uiverse.io */
@@ -99,6 +130,11 @@ button:hover {
 button:active {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
+}
+
+button#autorizar {
+  display: none;
+  margin-top: 50px;
 }
 
 .footer {

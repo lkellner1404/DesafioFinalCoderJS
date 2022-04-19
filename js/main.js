@@ -2,9 +2,6 @@
 // En caso que el usuario ingrese un código que no se encuentra en la DB se finaliza el programa con los valores calculados hasta el error.
 
 let resultado = [];
-let valorPractica;
-let coseguro;
-let valorCoseguro = 0;
 let autorizar = false
 let btnAutorizar = document.getElementById("autorizar");
 let parcial;
@@ -17,7 +14,9 @@ const codigos = [];
 
 //agregar resta de coseguros
 function restaCoseguro() {
-    coseguro = confirm("Le corresponde coseguro según convenio?")
+    let valorPractica = 0;
+    let valorCoseguro = 0;
+    let coseguro = confirm("Le corresponde coseguro según convenio?")
     indice = resultado.findIndex(el => el.codigo == codigoBuscado);
     if (coseguro){
 
@@ -102,8 +101,32 @@ loginBtn.onclick = (e) => {
     let originalForm = document.getElementById("loginInicial")
     let newForm = document.createElement("section");
     newForm.setAttribute("id","loginNuevo");
-    newForm.innerHTML = `<span>Bienvenido ${usuario}</span><a href="#">logout</a>`;
+    newForm.innerHTML = `<span class="welcome">Bienvenido ${usuario}</span><a href="#">logout</a>`;
     form.appendChild(newForm);
     originalForm.style.display ="none";
-    console.log(form);
+    cambioMain();
+    // console.log(form);
+}
+function cambioMain(){
+    let originalMain = document.getElementById("originalMain");
+    originalMain.style.display = "none";
+    let newMain = document.getElementById("newMain");
+    newMain.innerHTML = `
+    <form id="formPracticas">
+        <div>
+            <label>Elija las prácticas a autorizar</label>
+        </div>
+        <section class="selectorPracticas">
+            <select name="practica" class="practicas">
+                <option value="0">-</option>
+                <option value="180104">180104 - Ecografia Tocoginecologica</option>
+                <option value="180106">180106 - Ecografia Mamaria</option>
+                <option value="180112">180112 - Ecografia Abdominal</option>
+                <option value="180116">180116 - Ecografia Renal Bilateral</option>
+            </select>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </section>
+    </form>`;
+    btnAutorizar.style.display = "inline-block";
 }

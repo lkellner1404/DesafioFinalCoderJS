@@ -22,4 +22,8 @@ button {
     &:active{
         transform: translateY(-1px);
     }
+    &#autorizar{
+        display: none;
+        margin-top: 50px;
+    }
 }

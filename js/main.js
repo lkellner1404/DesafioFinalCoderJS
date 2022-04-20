@@ -1,10 +1,9 @@
-// Se crea una DB para simular prácticas para autorizar, se le pide al usuario el código de la práctica, si está en la DB busca el valor y le pide si tiene coseguro, en caso que sea positivo le resta este al valor y continúa con otro codigo.
-// En caso que el usuario ingrese un código que no se encuentra en la DB se finaliza el programa con los valores calculados hasta el error.
+// Se crea una DB para simular prácticas para autorizar, se "loguea" y permite el ingreso de práctias para calcular el monto a abonar por el paciente usando selects.
 
 let resultado = [];
 let autorizar = false
 let btnAutorizar = document.getElementById("autorizar");
-let parcial;
+let parcial = 0;
 let imprimir = [];
 let codigoBuscado;
 let indice;
@@ -33,10 +32,11 @@ function restaCoseguro() {
 
 // clase de codigos con metodos de cambio de datos
 class Prestacion {
-    constructor(codigo,descripcion,valor,coseguro){
+    constructor(codigo,descripcion,valor,valorCoseguro,coseguro){
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.valor = valor;
+        this.valorCoseguro = valorCoseguro;
         this.coseguro = coseguro;
     }
     modificarValorManual(){
@@ -48,47 +48,47 @@ class Prestacion {
 }
 
 function addPrestacion(){ //pido a usuario datos para agregar codigos
-    let newPrestacion = new Prestacion(prompt("Ingrese código para agregar práctica"),prompt("Ingrese la descripción"), parseFloat(prompt("Ingrese el valor de la práctica")), parseInt(prompt("Ingrese el valor del coseguro según convenio")));
+    let newPrestacion = new Prestacion(prompt("Ingrese código para agregar práctica"),prompt("Ingrese la descripción"), parseFloat(prompt("Ingrese el valor de la práctica")), parseInt(prompt("Ingrese el valor del coseguro según convenio")),confirm("Debe abonar coseguro?"));
     codigos.push(newPrestacion);
 }
 
 //creo codigos por defecto armando database
-const dbPrestacion = (codigo,descripcion,valor,coseguro) => { 
-    let newPrestacion = new Prestacion(codigo,descripcion,valor,coseguro);
+const dbPrestacion = (codigo,descripcion,valor,valorCoseguro,coseguro) => { 
+    let newPrestacion = new Prestacion(codigo,descripcion,valor,valorCoseguro,coseguro);
     codigos.push(newPrestacion);
 }
 
-dbPrestacion("180104","Ecografia Ginecológica",300,50);
-dbPrestacion("180106","Ecografia Mamaria",400,50);
-dbPrestacion("180112","Ecografia Abdominal",400,100);
-dbPrestacion("180116","Ecografia Renal",300,50);
+dbPrestacion("180104","Ecografia Ginecológica",300,50,true);
+dbPrestacion("180106","Ecografia Mamaria",400,50,true);
+dbPrestacion("180112","Ecografia Abdominal",400,100,true);
+dbPrestacion("180116","Ecografia Renal",300,150,true);
 //fin de database
 
-btnAutorizar.addEventListener("click",() => {
-    autorizar = true;
-    if (autorizar){
-        do {
-            codigoBuscado = prompt("Ingrese código de práctica");
-            let encuentra = codigos.some(el => el.codigo == codigoBuscado);
-            if (encuentra) {
-                resultado.push(codigos.find(el => el.codigo == codigoBuscado));
-                restaCoseguro()
-                resultado[indice].modificarValor(parcial);
-                autorizar = confirm("Tiene otra práctica para autorizar?")
-            } else {
-                alert("No se encontro la práctica");
-                break
-            }
-        } while (autorizar);
-        imprimir = resultado;
-        resultado = resultado.reduce((acumulador, el) => acumulador + el.valor, 0);
-    }
-    if (resultado > 0){
-        console.log(`El paciente debe abonar un total de $${resultado}.`)
-    } else {
-        console.log("El paciente no debe abonar");
-    }
-})
+// btnAutorizar.addEventListener("click",() => {
+//     autorizar = true;
+//     if (autorizar){
+//         do {
+//             codigoBuscado = prompt("Ingrese código de práctica");
+//             let encuentra = codigos.some(el => el.codigo == codigoBuscado);
+//             if (encuentra) {
+//                 resultado.push(codigos.find(el => el.codigo == codigoBuscado));
+//                 restaCoseguro()
+//                 resultado[indice].modificarValor(parcial);
+//                 autorizar = confirm("Tiene otra práctica para autorizar?")
+//             } else {
+//                 alert("No se encontro la práctica");
+//                 break
+//             }
+//         } while (autorizar);
+//         imprimir = resultado;
+//         resultado = resultado.reduce((acumulador, el) => acumulador + el.valor, 0);
+//     }
+//     if (resultado > 0){
+//         console.log(`El paciente debe abonar un total de $${resultado}.`)
+//     } else {
+//         console.log("El paciente no debe abonar");
+//     }
+// })
 
 let usuario = "";
 let username = document.querySelector("#username");
@@ -112,3 +112,30 @@ function cambioMain(){
     newMain.style.display = "block";
     btnAutorizar.style.display = "inline-block";
 }
+
+let arrayAutorizar = [];
+btnAutorizar.addEventListener("click", (e) => {
+    e.preventDefault();
+    resultado = [];
+    parcial = 0;
+    arrayAutorizar = document.querySelectorAll(".practicas");
+    arrayAutorizar.forEach(element => {
+        if (element.value != ""){
+            resultado.push(codigos.find(el => el.codigo == element.value));
+        }
+    });
+    resultado.forEach(element => {
+        if (element.coseguro) {
+            parcial = parcial + element.valorCoseguro;
+        } else {
+            parcial = parcial;
+        }
+    })
+    parcial = parcial.toFixed(2);
+    if (parcial > 0) {
+        let p = document.getElementById("resultado");
+        p.innerText = `El paciente debe abonar $${parcial}`;
+    }
+})
+
+

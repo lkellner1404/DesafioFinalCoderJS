@@ -40,24 +40,48 @@
                 <div>
                     <label>Elija las prácticas a autorizar</label>
                 </div>
-                <section class="selectorPracticas">
+                <!-- <button id="mas">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <button id="menos">
+                    <i class="fa-solid fa-minus"></i>
+                </button> -->
+                <form id="formAutorizador">
                     <select name="practica" class="practicas">
-                        <option value="0">-</option>
+                        <option value="" disabled selected>-</option>
                         <option value="180104">180104 - Ecografia Tocoginecologica</option>
                         <option value="180106">180106 - Ecografia Mamaria</option>
                         <option value="180112">180112 - Ecografia Abdominal</option>
                         <option value="180116">180116 - Ecografia Renal Bilateral</option>
                     </select>
-                    <button id="mas">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                    <button id="menos">
-                        <i class="fa-solid fa-minus"></i>
-                    </button>
-                </section>
-                <div>
-                    <button id="autorizar">Autorizar Prácticas</button>
-                </div>
+                    <select name="practica" class="practicas">
+                        <option value="" disabled selected>-</option>
+                        <option value="180104">180104 - Ecografia Tocoginecologica</option>
+                        <option value="180106">180106 - Ecografia Mamaria</option>
+                        <option value="180112">180112 - Ecografia Abdominal</option>
+                        <option value="180116">180116 - Ecografia Renal Bilateral</option>
+                    </select>
+                    <select name="practica" class="practicas">
+                        <option value="" disabled selected>-</option>
+                        <option value="180104">180104 - Ecografia Tocoginecologica</option>
+                        <option value="180106">180106 - Ecografia Mamaria</option>
+                        <option value="180112">180112 - Ecografia Abdominal</option>
+                        <option value="180116">180116 - Ecografia Renal Bilateral</option>
+                    </select>
+                    <select name="practica" class="practicas">
+                        <option value="" disabled selected>-</option>
+                        <option value="180104">180104 - Ecografia Tocoginecologica</option>
+                        <option value="180106">180106 - Ecografia Mamaria</option>
+                        <option value="180112">180112 - Ecografia Abdominal</option>
+                        <option value="180116">180116 - Ecografia Renal Bilateral</option>
+                    </select>
+                    <div>
+                        <p id="resultado"></p>
+                    </div>
+                    <div>
+                        <button id="autorizar">Autorizar Prácticas</button>
+                    </div>
+                </form>
             </form>
         </section>
     </main>

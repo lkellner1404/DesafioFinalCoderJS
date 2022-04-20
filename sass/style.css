@@ -75,12 +75,27 @@ main #newMain {
   display: none;
 }
 
-main #newMain #formPracticas label {
+main #newMain #formPracticas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main #newMain #formPracticas div {
   margin-bottom: 10px;
 }
 
-main #newMain #formPracticas section.selectorPracticas {
-  margin-bottom: 10px;
+main #newMain #formPracticas select {
+  margin-bottom: 7px;
+}
+
+main #newMain #resultado {
+  font-size: 2rem;
+  margin: 10px auto;
 }
 
 /* From uiverse.io */

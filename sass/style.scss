@@ -29,18 +29,19 @@ main{
     #newMain{
         display: none;
         #formPracticas{
-            label{
+            display: flex;
+            flex-direction: column;
+            div{
                 margin-bottom: 10px;
             }
-            section.selectorPracticas{
-                margin-bottom: 10px;
-                // .fa-plus{
-                //     @include iconos_mas_menos(orangered);
-                // }
-                // .fa-minus{
-                //     @include iconos_mas_menos(lightskyblue);
-                // }
+            select{
+                margin-bottom: 7px;
             }
+        }
+        #resultado{
+            font-size: 2rem;
+            margin: 10px auto;
+            
         }
     }
 }

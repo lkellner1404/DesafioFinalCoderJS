@@ -65,21 +65,24 @@ dbPrestacion("180116","Ecografia Renal",300,150,true);
 //fin de database
 
 
-let usuario = "";
-let username = document.querySelector("#username");
-username.onchange = () =>{usuario = username.value;}
+let usuario = document.getElementById("username");
 let loginBtn = document.getElementById("loginBtn");
 loginBtn.onclick = (e) => {
     e.preventDefault();
+    cambioLogin();
+    cambioMain();
+}
+
+const cambioLogin = () =>{
     let form = document.querySelector(".login");
     let originalForm = document.getElementById("loginInicial")
     let newForm = document.createElement("section");
     newForm.setAttribute("id","loginNuevo");
-    newForm.innerHTML = `<span class="welcome">Bienvenido ${usuario}</span><a href="#">logout</a>`;
+    newForm.innerHTML = `<span class="welcome">Bienvenido ${usuario.value}</span><a href="#">logout</a>`;
     form.appendChild(newForm);
     originalForm.style.display ="none";
-    cambioMain();
 }
+
 function cambioMain(){
     let originalMain = document.getElementById("originalMain");
     originalMain.style.display = "none";

@@ -64,31 +64,6 @@ dbPrestacion("180112","Ecografia Abdominal",400,100,true);
 dbPrestacion("180116","Ecografia Renal",300,150,true);
 //fin de database
 
-// btnAutorizar.addEventListener("click",() => {
-//     autorizar = true;
-//     if (autorizar){
-//         do {
-//             codigoBuscado = prompt("Ingrese código de práctica");
-//             let encuentra = codigos.some(el => el.codigo == codigoBuscado);
-//             if (encuentra) {
-//                 resultado.push(codigos.find(el => el.codigo == codigoBuscado));
-//                 restaCoseguro()
-//                 resultado[indice].modificarValor(parcial);
-//                 autorizar = confirm("Tiene otra práctica para autorizar?")
-//             } else {
-//                 alert("No se encontro la práctica");
-//                 break
-//             }
-//         } while (autorizar);
-//         imprimir = resultado;
-//         resultado = resultado.reduce((acumulador, el) => acumulador + el.valor, 0);
-//     }
-//     if (resultado > 0){
-//         console.log(`El paciente debe abonar un total de $${resultado}.`)
-//     } else {
-//         console.log("El paciente no debe abonar");
-//     }
-// })
 
 let usuario = "";
 let username = document.querySelector("#username");

@@ -43,4 +43,9 @@ button {
             transform: none;
         }
     }
+    &#ctaAutorizar{
+        @extend #autorizar;
+        opacity: 0;
+        pointer-events: none;
+    }
 }

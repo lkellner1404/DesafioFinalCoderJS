@@ -64,24 +64,45 @@ dbPrestacion("180112","Ecografia Abdominal",400,100,true);
 dbPrestacion("180116","Ecografia Renal",300,150,true);
 //fin de database
 
-
-let usuario = document.getElementById("username");
-let loginBtn = document.getElementById("loginBtn");
-loginBtn.onclick = (e) => {
-    e.preventDefault();
-    cambioLogin();
-    cambioMain();
-}
-
-const cambioLogin = () =>{
+const cambioLogin = (element) =>{
     let form = document.querySelector(".login");
     let originalForm = document.getElementById("loginInicial")
     let newForm = document.createElement("section");
     newForm.setAttribute("id","loginNuevo");
-    newForm.innerHTML = `<span class="welcome">Bienvenido ${usuario.value}</span><a href="#">logout</a>`;
+    newForm.innerHTML = `<span class="welcome">Bienvenido ${element}</span><a href="#" onclick="logout()">logout</a>`;
     form.appendChild(newForm);
     originalForm.style.display ="none";
 }
+
+let usuario = document.getElementById("username");
+let loginBtn = document.getElementById("loginBtn");
+let ctaAutorizar = document.getElementById("ctaAutorizar");
+
+//login en storage
+let loginStorage = localStorage.getItem("user");
+if (loginStorage){
+    cambioLogin(loginStorage);
+    ctaAutorizar.style.opacity = 1;
+    ctaAutorizar.style.pointerEvents = "initial";
+} 
+
+loginBtn.onclick = (e) => {
+    e.preventDefault();
+    cambioLogin(usuario.value);
+    localStorage.setItem("user",usuario.value);
+    cambioMain();
+}
+
+const logout = () =>{
+    localStorage.removeItem("user");
+    location.reload();
+}
+
+ctaAutorizar.onclick = (e) => {
+    e.preventDefault();
+    cambioMain();
+}
+
 
 function cambioMain(){
     let originalMain = document.getElementById("originalMain");

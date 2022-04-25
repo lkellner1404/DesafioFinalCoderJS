@@ -131,7 +131,7 @@ button:active {
           transform: translateY(-1px);
 }
 
-button#autorizar {
+button#autorizar, button#ctaAutorizar {
   margin-top: 50px;
 }
 
@@ -173,6 +173,11 @@ button#menos i {
 button#menos:hover {
   -webkit-transform: none;
           transform: none;
+}
+
+button#ctaAutorizar {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .footer {

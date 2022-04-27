@@ -42,8 +42,8 @@ class Prestacion {
     modificarValorManual(){
         this.valor = parseFloat(prompt("Ingrese el nuevo valor de la práctica"));
     }
-    modificarValor(a){
-        this.valor = a;
+    sumarIVA(){
+        this.valor = this.valor * 1.21;
     }
 }
 
@@ -124,11 +124,8 @@ btnAutorizar.addEventListener("click", (e) => {
         }
     });
     resultado.forEach(element => {
-        if (element.coseguro) {
-            parcial = parcial + element.valorCoseguro;
-        } else {
-            parcial = parcial;
-        }
+        const { valorCoseguro, coseguro } = element
+        coseguro ? parcial += valorCoseguro : parcial = parcial;
     })
     parcial = parcial.toFixed(2);
     if (parcial > 0) {

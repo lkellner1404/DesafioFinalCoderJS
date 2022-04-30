@@ -1,4 +1,5 @@
 // Se crea una DB para simular prácticas para autorizar, se "loguea" y permite el ingreso de práctias para calcular el monto a abonar por el paciente usando selects.
+let DateTime = luxon.DateTime;
 
 let resultado = [];
 let autorizar = false
@@ -7,6 +8,7 @@ let parcial = 0;
 let imprimir = [];
 let codigoBuscado;
 let indice;
+let autorizaTiempo;
 
 // array de codigos
 const codigos = [];
@@ -132,6 +134,33 @@ btnAutorizar.addEventListener("click", (e) => {
         let p = document.getElementById("resultado");
         p.innerText = `El paciente debe abonar $${parcial}`;
     }
+    autorizaTiempo = DateTime.now();
+    console.log(`Se autorizó en este momento ${autorizaTiempo.toLocaleString(DateTime.DATETIME_FULL)}`);
+    console.table(resultado);
+    console.log(`Se indicó abonar $${parcial}`);
+    storeAutorizacion();
 })
+
+function storeAutorizacion(){
+    let storageAutorizacion = JSON.parse(localStorage.getItem("autorizacion"));
+    let guardar = {
+        tiempo: autorizaTiempo.toLocaleString(DateTime.DATETIME_FULL),
+        practicas: resultado,
+        valorFinal: parcial
+    };
+    let arrayStore = [];
+    if (!storageAutorizacion){
+        arrayStore.push(guardar);
+        localStorage.setItem("autorizacion",JSON.stringify(arrayStore));
+    } else {
+        arrayStore = storageAutorizacion;
+        arrayStore.push(guardar);
+        localStorage.setItem("autorizacion",JSON.stringify(arrayStore));
+    }
+}
+    
+const clearStorage = (key) =>{
+    localStorage.removeItem(key);
+};
 
 

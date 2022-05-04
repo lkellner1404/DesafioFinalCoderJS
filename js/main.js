@@ -139,6 +139,7 @@ btnAutorizar.addEventListener("click", (e) => {
     console.table(resultado);
     console.log(`Se indicó abonar $${parcial}`);
     storeAutorizacion();
+    mostrarToast();
 })
 
 function storeAutorizacion(){
@@ -164,3 +165,14 @@ const clearStorage = (key) =>{
 };
 
 
+const mostrarToast = () => {
+    setTimeout( ()=>{
+        Toastify({
+            text: "Calculo guardado en servidor",
+            duration: 4000,
+            style: {
+                background: "linear-gradient(to top, #00ff76, #84ecb4)"
+            }
+        }).showToast()
+    },1000)
+}

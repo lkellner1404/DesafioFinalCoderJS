@@ -55,43 +55,8 @@ function addPrestacion(){ //pido a usuario datos para agregar codigos
     codigos.push(newPrestacion);
 }
 
-/* ========= MUEVO BASE DE DATOS A CODIGOS.JSON =========
-
-//creo codigos por defecto armando database
-const dbPrestacion = (codigo,descripcion,valor,valorCoseguro,coseguro,servicio) => { 
-    let newPrestacion = new Prestacion(codigo,descripcion,valor,valorCoseguro,coseguro,servicio);
-    codigos.push(newPrestacion);
-}
-
-dbPrestacion("180104","Ecografia Ginecológica",300,50,true,18);
-dbPrestacion("180106","Ecografia Mamaria",400,50,true,18);
-dbPrestacion("180107","Ecografia Cerebral",400,50,true,18);
-dbPrestacion("180108","Ecografia Oftalmica",350,50,true,18);
-dbPrestacion("180110","Ecografia Tiroidea",300,50,true,18);
-dbPrestacion("180111","Ecografia Testicular",500,50,true,18);
-dbPrestacion("180112","Ecografia Abdominal",450,100,true,18);
-dbPrestacion("180113","Ecografia Hepatica, Biliar, Esplenica o Toracica",400,100,true,18);
-dbPrestacion("180114","Ecografia Vesicoprostatica",350,100,true,18);
-dbPrestacion("180116","Ecografia Renal",350,150,true,18);
-dbPrestacion("180117","Ecografia de Aorta Abdominal",300,150,true,18);
-dbPrestacion("180118","Ecografia Pancreatica o Suprarrenal",300,150,true,18);
-
-dbPrestacion("180202","Eco Doppler Mamario Bilateral",300,150,true,19);
-dbPrestacion("180204","Eco Doppler Cardiaco",500,50,true,19);
-dbPrestacion("180206","Eco Doppler Vascular Periferico",400,50,true,19);
-dbPrestacion("180208","Eco Doppler Abdominal",300,50,true,19);
-dbPrestacion("180210","Eco Doppler Arterial Bilateral",400,50,true,19);
-dbPrestacion("180214","Eco Doppler Venoso Bilateral",400,50,true,19);
-dbPrestacion("180218","Eco Doppler Vasos de Cuello",400,50,true,19);
-dbPrestacion("180224","Eco Doppler Testicular",300,50,true,19);
-dbPrestacion("180226","Eco Doppler Obstetrico",300,50,true,19);
-dbPrestacion("180228","Eco Doppler Cardiaco Fetal",500,50,true,19);
-dbPrestacion("180239","Eco Doppler Cardiaco Transesofagico",500,50,true,19);
-dbPrestacion("180230","Eco Doppler Transcraneano",500,50,true,19);
-dbPrestacion("180240","Eco Doppler Aorta Renal",300,50,true,19);
-dbPrestacion("180248","Eco Doppler Tiroideo",300,50,true,19);
-
-//fin de database
+/* 
+========= MUEVO BASE DE DATOS A CODIGOS.JSON =========
 */
 
 const cambioLogin = (element) =>{

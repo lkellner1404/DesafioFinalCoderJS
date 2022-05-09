@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Leonardo Kellner</title>
+    <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./sass/style.css">
+</head>
+<body>
+    <header>
+        <a href="#">
+            <img src="./img/logo.svg" alt="">
+        </a>
+
+        <form class="login" action="">
+            <section id="loginInicial">
+                <input type="text" name="" id="username" placeholder="Nombre">
+                <input type="password" name="" id="password">
+                <div class="login__button">
+                    <button id="loginBtn">Ingresar</button>
+                </div>
+            </section>
+        </form>
+    </header>
+    
+    <main>
+        <section class="selectorObraSocial">
+            <section class="selectorObraSocial__particular">
+                <span>El paciente tiene Obra Social?</span>
+                <input type="radio" name="pteParticular" id="pteParticularSi"><label for="pteParticularSi">SI</label>
+                <input type="radio" name="pteParticular" id="pteParticularNo"><label for="pteParticularNo">NO</label>
+                <button id="continuar">continuar</button>
+            </section>
+            <section id="selectorObraSocial__obraSocial"></section>
+        </section>
+        <section id="practicas" style="display: grid; grid-template-columns: 3fr 1fr;">
+            <div>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id=""></td>
+                        <td>180104</td>
+                        <td>Ecografia Tocoginecologica</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+
+                <button id="autorizar">Autorizar Prácticas</button>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">Leonardo Kellner &copy;2022</p>
+    </footer>
+
+
+    <script src="./js/luxon.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

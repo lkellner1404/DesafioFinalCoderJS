@@ -1,9 +1,14 @@
 let codigos = [];
+let arrayBuscar = [];
+let parcial = [];
 let obraSocialSelect;
 let servicio;
 let practicas = document.getElementById("practicas");
 let continuar1 = document.getElementById("continuar1");
+let carrito;
 const selectorObraSocial__obraSocial = document.getElementById("selectorObraSocial__obraSocial");
+
+
 
 continuar1.addEventListener("click",()=>{
     if (document.getElementById("pteParticularSi").checked){
@@ -119,7 +124,7 @@ const programa = () => {
                 let linea = document.createElement("tr")
                 linea.innerHTML = 
                 `
-                <td><input type="checkbox" value="${el.codigo}"></td>
+                <td><input type="checkbox" value="${el.codigo}" class="checkbox"></td>
                 <td>${el.codigo}</td>
                 <td>${el.descripcion}</td>
                 `
@@ -128,11 +133,20 @@ const programa = () => {
         });
     }
     practicas.appendChild(servicioSelect);
+    desvanecerBtn(document.getElementById("continuar2"));
+    desvanecerBtn(document.getElementById("volver1"));
     displayPrograma();
     console.log("aca armaria la pantalla de la tabla y el menu a la derecha con el boton autorizar")
 }
 
 const displayPrograma = () => {
+    let masterDiv = document.createElement("div");
+    masterDiv.setAttribute("id","masterDiv");
+    masterDiv.style.display = "flex";
+    masterDiv.style.flexDirection = "direction;"
+    masterDiv.style.width = "95vw";
+    masterDiv.style.paddingInline = "2.5vw";
+
     let divPrimario = document.createElement("div");
     divPrimario.setAttribute("id","tabla__practicas");
     divPrimario.style.flexGrow = "10";
@@ -145,6 +159,7 @@ const displayPrograma = () => {
             <th>Descripcion</th>
         </tr>
     </table>
+    <button onclick="alCarrito()">agregar</button>
     `;
     let divSecundario = document.createElement("div");
     divSecundario.setAttribute("id","carrito__practicas");
@@ -153,9 +168,62 @@ const displayPrograma = () => {
     `
     <div id="carrito"></div>
     <button id="autorizar">Autorizar Prácticas</button>
-    <button>volver atras</button>
+    <button onclick="limpiarCarrito()">limpiar</button>
     `;
-    practicas.appendChild(divPrimario);
-    practicas.appendChild(divSecundario);
+    practicas.appendChild(masterDiv)
+    masterDiv.appendChild(divPrimario);
+    masterDiv.appendChild(divSecundario);
+    carrito = document.getElementById("carrito");
+    carrito.innerHTML = 
+    `
+    <table id="carrito__tabla">
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+        </tr>
+    </table>
+    `;
 }
 
+const alCarrito = () =>{
+    let codigoBuscado = document.getElementsByClassName("checkbox");
+    arrayBuscar = [...codigoBuscado];
+    for (const codigo of arrayBuscar) {
+        if(codigo.checked){
+            console.log(codigo.value);   
+            parcial.push(codigos.find(el => el.codigo == codigo.value));
+        }
+    }
+    carrito = document.getElementById("carrito");
+    carrito.innerHTML = 
+    `
+    <table id="carrito__tabla">
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+        </tr>
+    </table>
+    `;
+    parcial.forEach(el => {
+        let linea = document.createElement("tr")
+        linea.innerHTML = 
+        `
+        <td>${el.codigo}</td>
+        <td>${el.descripcion}</td>
+        `
+        document.getElementById("carrito__tabla").appendChild(linea)
+    })
+}
+
+const limpiarCarrito = () =>{
+    parcial = [];
+    carrito.innerHTML = 
+    `
+    <table id="carrito__tabla">
+        <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+        </tr>
+    </table>
+    `;
+}

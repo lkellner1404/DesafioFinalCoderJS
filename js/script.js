@@ -1,35 +1,65 @@
 let codigos = [];
 let arrayBuscar = [];
 let parcial = [];
+let final = [];
+let valorFinal;
 let obraSocialSelect;
+let obraSocial;
+let particular;
 let servicio;
 let practicas = document.getElementById("practicas");
 let continuar1 = document.getElementById("continuar1");
 let carrito;
 const selectorObraSocial__obraSocial = document.getElementById("selectorObraSocial__obraSocial");
 
-
-
-continuar1.addEventListener("click",()=>{
-    if (document.getElementById("pteParticularSi").checked){
-        console.log("Tiene OS")
-        cambioSi();
+class Prestacion {
+    constructor(codigo,descripcion,valor,valorCoseguro,coseguro,servicio){
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.valor = valor;
+        this.valorCoseguro = valorCoseguro;
+        this.coseguro = coseguro;
+        this.servicio = servicio;
     }
-    if (document.getElementById("pteParticularNo").checked){
-        console.log("No Tiene OS")
-        cambioNo();
+    esPAMI(){
+        this.valor = this.valor * 0.5;
     }
-});
+    sumarIVA(){
+        this.valor = this.valor * 1.21;
+    }
+}
+
+// ------ DESCARGO DATOS DE JSON ------
 
 const obtenerCodigos = async () => {
     try {
         let respuesta = await fetch("js/codigos.json");
         let resultado = await respuesta.json();
-        codigos = resultado;
+        //spread y new prestacion en for each resultado
+        for (const cod of resultado) {
+            const { codigo,descripcion,valor,valorCoseguro,coseguro,servicio } = cod;
+            codigos.push( new Prestacion(codigo,descripcion,valor,valorCoseguro,coseguro,servicio));
+        }
+        // codigos = resultado;
     } catch (error) {
         console.log(error);
     }
 }
+
+// ------ SETEO DE PROPIEDADES DEL PACIENTE ------
+
+continuar1.addEventListener("click",()=>{
+    if (document.getElementById("pteConObraSocial").checked){
+        console.log("Tiene OS")
+        particular = false;
+        cambioSi();
+    }
+    if (document.getElementById("pteSinObraSocial").checked){
+        console.log("No Tiene OS")
+        particular = true;
+        cambioNo();
+    }
+});
 
 const cambioSi = async () => {
     try {
@@ -45,8 +75,8 @@ const cambioSi = async () => {
         <button onclick="reload()" id="volver1">volver atras</button>
         `;
         desvanecerBtn(continuar1);
-        deshabilitar("pteParticularSi")
-        deshabilitar("pteParticularNo")
+        deshabilitar("pteConObraSocial")
+        deshabilitar("pteSinObraSocial")
         selectorObraSocial();
         obtenerCodigos();
     } catch(error) {
@@ -66,8 +96,8 @@ const cambioNo = async () => {
         <button onclick="reload()" id="volver1">volver atras</button>
         `;
         desvanecerBtn(continuar1);
-        deshabilitar("pteParticularSi");
-        deshabilitar("pteParticularNo");
+        deshabilitar("pteConObraSocial");
+        deshabilitar("pteSinObraSocial");
         obtenerCodigos();
     } catch (error) {
         console.log(error);
@@ -97,7 +127,10 @@ const selectorObraSocial = async () => {
     }
 }
 
+// ------ POPULA TABLA PARA SELECCIONAR CODIGOS ------
+
 const programa = () => {
+    obraSocial = document.getElementById("obraSocial").value;
     deshabilitar("obraSocial");
     let servicioSelect = document.createElement("select");
     servicioSelect.setAttribute("id","servicioSelect");
@@ -136,7 +169,6 @@ const programa = () => {
     desvanecerBtn(document.getElementById("continuar2"));
     desvanecerBtn(document.getElementById("volver1"));
     displayPrograma();
-    console.log("aca armaria la pantalla de la tabla y el menu a la derecha con el boton autorizar")
 }
 
 const displayPrograma = () => {
@@ -167,7 +199,7 @@ const displayPrograma = () => {
     divSecundario.innerHTML = 
     `
     <div id="carrito"></div>
-    <button id="autorizar">Autorizar Prácticas</button>
+    <button id="autorizar" onclick="autorizar()">Autorizar Prácticas</button>
     <button onclick="limpiarCarrito()">limpiar</button>
     `;
     practicas.appendChild(masterDiv)
@@ -185,13 +217,16 @@ const displayPrograma = () => {
     `;
 }
 
+
+// ------ CARGA PRESTACIONES EN CARRITO ------
+
 const alCarrito = () =>{
     let codigoBuscado = document.getElementsByClassName("checkbox");
     arrayBuscar = [...codigoBuscado];
     for (const codigo of arrayBuscar) {
         if(codigo.checked){
-            console.log(codigo.value);   
             parcial.push(codigos.find(el => el.codigo == codigo.value));
+            codigo.click();
         }
     }
     carrito = document.getElementById("carrito");
@@ -208,7 +243,7 @@ const alCarrito = () =>{
         let linea = document.createElement("tr")
         linea.innerHTML = 
         `
-        <td>${el.codigo}</td>
+        <td class="practicasFinal">${el.codigo}</td>
         <td>${el.descripcion}</td>
         `
         document.getElementById("carrito__tabla").appendChild(linea)
@@ -217,6 +252,7 @@ const alCarrito = () =>{
 
 const limpiarCarrito = () =>{
     parcial = [];
+    final = [];
     carrito.innerHTML = 
     `
     <table id="carrito__tabla">
@@ -226,4 +262,42 @@ const limpiarCarrito = () =>{
         </tr>
     </table>
     `;
+}
+
+// ------ FINALIZA PROCESO ------
+
+const autorizar = () => {
+    const tablita = document.querySelectorAll(".practicasFinal")
+    tablita.forEach( el => {
+        const codigosMapeados = codigos.map(cod => cod).filter(prestacion => prestacion.codigo == `${el.textContent}`);
+        // const codigoBuscado = codigosMapeados.filter(prestacion => prestacion.codigo == `${el.textContent}`);
+        final.push(...codigosMapeados);
+    })
+    valorFinal = final;
+    if (particular) {
+        for (const cod of valorFinal) {
+            cod.valor = cod.valor * 1.21;
+        }
+    }
+    switch (obraSocial) {
+        case "2":
+            for (const cod of valorFinal) {
+                cod.valor = cod.valor * 0.50;
+            }
+            valorFinal = valorFinal.reduce((acumulador, el) => acumulador + el.valor, 0);
+            break;
+        case "1":
+            valorFinal = valorFinal.reduce((acumulador, el) => acumulador + el.valorCoseguro, 0);
+            break;
+        case "0":
+            valorFinal = 0;
+            break;
+        default:
+            valorFinal = valorFinal.reduce((acumulador, el) => acumulador + el.valor, 0);
+            break;
+    }
+    valorFinal = valorFinal.toFixed(2);
+    console.table(final);
+    console.log(`El valor a abonar por el paciente es de ${valorFinal}`)
+    swal(`El valor a abonar por el paciente es de ${valorFinal}`);
 }

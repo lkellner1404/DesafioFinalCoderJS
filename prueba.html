@@ -8,9 +8,10 @@
     <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand&family=Raleway&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="./sass/style.css">
 </head>
 <body>
@@ -21,8 +22,8 @@
 
         <form class="login" action="">
             <section id="loginInicial">
-                <input type="text" name="" id="username" placeholder="Nombre">
-                <input type="password" name="" id="password">
+                <input type="text" name="" id="username" placeholder="Nombre" required>
+                <input type="password" name="" id="password" placeholder="Contraseña" required>
                 <div class="login__button">
                     <button id="loginBtn">Ingresar</button>
                 </div>
@@ -31,6 +32,10 @@
     </header>
     
     <main>
+        <section id="originalMain">
+            <h1>Bienvenido/a a Megadiagnóstico!</h1>
+            <p>Este es un simulador que calcula el monto a abonar por el paciente en un centro medico. Utiliza una base de datos estática con datos precargados, cuenta con 2 servicios y la información de las Obras Sociales está generalizada para facilitar los ejemplos.</p>
+        </section>
         <section class="selectorObraSocial">
             <section class="selectorObraSocial__particular">
                 <span>El paciente tiene Obra Social?</span>
@@ -40,8 +45,9 @@
             </section>
             <section id="selectorObraSocial__obraSocial"></section>
         </section>
+
         <section id="practicas" style="display: flex;flex-direction: column;align-items: center;width: 95vw;padding: 2.5vw;">
-            
+
         </section>
     </main>
 

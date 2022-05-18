@@ -35,15 +35,48 @@ const obtenerCodigos = async () => {
     try {
         let respuesta = await fetch("js/codigos.json");
         let resultado = await respuesta.json();
-        //spread y new prestacion en for each resultado
         for (const cod of resultado) {
             const { codigo,descripcion,valor,valorCoseguro,coseguro,servicio } = cod;
             codigos.push( new Prestacion(codigo,descripcion,valor,valorCoseguro,coseguro,servicio));
         }
-        // codigos = resultado;
     } catch (error) {
         console.log(error);
     }
+}
+
+// ------ SIMULADOR DE LOGIN ------
+
+let usuario = document.getElementById("username");
+let loginBtn = document.getElementById("loginBtn");
+let loginStorage = localStorage.getItem("user");
+
+const cambioLogin = (element) =>{
+    let form = document.querySelector(".login");
+    let originalForm = document.getElementById("loginInicial")
+    let newForm = document.createElement("section");
+    newForm.setAttribute("id","loginNuevo");
+    newForm.innerHTML = `<span class="welcome">Bienvenido ${element}</span><a href="#" onclick="logout()">logout</a>`;
+    form.appendChild(newForm);
+    originalForm.style.display ="none";
+}
+
+loginStorage && cambioLogin(loginStorage);
+
+// if (loginStorage){
+//     cambioLogin(loginStorage);
+// } 
+
+loginBtn.onclick = (e) => {
+    e.preventDefault();
+    cambioLogin(usuario.value);
+    localStorage.setItem("user",usuario.value);
+    //cambioMain();
+    //obtenerCodigos();
+}
+
+const logout = () =>{
+    localStorage.removeItem("user");
+    location.reload();
 }
 
 // ------ SETEO DE PROPIEDADES DEL PACIENTE ------
@@ -252,7 +285,7 @@ const alCarrito = () =>{
 
 const limpiarCarrito = () =>{
     parcial = [];
-    final = [];
+    // final = [];
     carrito.innerHTML = 
     `
     <table id="carrito__tabla">
@@ -267,13 +300,22 @@ const limpiarCarrito = () =>{
 // ------ FINALIZA PROCESO ------
 
 const autorizar = () => {
-    const tablita = document.querySelectorAll(".practicasFinal")
-    tablita.forEach( el => {
-        const codigosMapeados = codigos.map(cod => cod).filter(prestacion => prestacion.codigo == `${el.textContent}`);
-        // const codigoBuscado = codigosMapeados.filter(prestacion => prestacion.codigo == `${el.textContent}`);
-        final.push(...codigosMapeados);
-    })
-    valorFinal = final;
+    // const tablita = document.querySelectorAll(".practicasFinal")
+    // tablita.forEach( el => {
+    //     const codigosMapeados = codigos.map(cod => cod).filter(prestacion => prestacion.codigo == `${el.textContent}`);
+    //     // const codigoBuscado = codigosMapeados.filter(prestacion => prestacion.codigo == `${el.textContent}`);
+    //     final.push(...codigosMapeados);
+    // })
+    valorFinal = parcial;
+    calcularSegunObraSocial();
+    console.table(parcial);
+    console.log(`El valor a abonar por el paciente es de ${valorFinal}`)
+    swal({title:`El valor a abonar por el paciente es de ${valorFinal}`,button:"Aceptar"});
+    revertirCalcularSegunOS()
+    limpiarCarrito()
+}
+
+const calcularSegunObraSocial = () =>{
     if (particular) {
         for (const cod of valorFinal) {
             cod.valor = cod.valor * 1.21;
@@ -297,7 +339,17 @@ const autorizar = () => {
             break;
     }
     valorFinal = valorFinal.toFixed(2);
-    console.table(final);
-    console.log(`El valor a abonar por el paciente es de ${valorFinal}`)
-    swal({title:`El valor a abonar por el paciente es de ${valorFinal}`});
+}
+
+const revertirCalcularSegunOS = () => {
+    if (particular) {
+        for (const cod of parcial) {
+            cod.valor = cod.valor / 1.21;
+        }
+    }
+    if (obraSocial == 2) {
+        for (const cod of parcial) {
+            cod.valor = cod.valor / 0.50;
+        }
+    }
 }

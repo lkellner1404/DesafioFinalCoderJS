@@ -8,10 +8,10 @@
     <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
-    <!-- <script src="https://kit.fontawesome.com/bc4d87f7a1.js" crossorigin="anonymous"></script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand&family=Raleway&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="./sass/style.css">
 </head>
 <body>
@@ -22,8 +22,8 @@
 
         <form class="login" action="">
             <section id="loginInicial">
-                <input type="text" name="" id="username" placeholder="Nombre">
-                <!-- <input type="password" name="" id="password"> -->
+                <input type="text" name="" id="username" placeholder="Nombre" required>
+                <input type="password" name="" id="password" placeholder="Contraseña" required>
                 <div class="login__button">
                     <button id="loginBtn">Ingresar</button>
                 </div>
@@ -33,58 +33,21 @@
     
     <main>
         <section id="originalMain">
-            <h1 class="animate__animated animate__backInDown animate__delay-2s">ESTE ES UNA DE PRESTACIONES MEDICAS</h1>
-            <p class="animate__animated animate__bounceInLeft animate__delay-3s"> Orientado para uso profesional en instituciones de salud.</p>
-            <button id="ctaAutorizar">ir al autorizador</button>
+            <h1>Bienvenido/a a Megadiagnóstico!</h1>
+            <p>Este es un simulador que calcula el monto a abonar por el paciente en un centro medico. Utiliza una base de datos estática con datos precargados, cuenta con 2 servicios y la información de las Obras Sociales está generalizada para facilitar los ejemplos.</p>
         </section>
-        <section id="newMain">
-            <form id="formPracticas">
-                <div>
-                    <label>Elija las prácticas a autorizar</label>
-                </div>
-                <!-- <button id="mas">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-                <button id="menos">
-                    <i class="fa-solid fa-minus"></i>
-                </button> -->
-                <form id="formAutorizador">
-                    <select name="practica" class="practicas">
-                        <option value="" disabled selected>-</option>
-                        <option value="180104">180104 - Ecografia Tocoginecologica</option>
-                        <option value="180106">180106 - Ecografia Mamaria</option>
-                        <option value="180112">180112 - Ecografia Abdominal</option>
-                        <option value="180116">180116 - Ecografia Renal Bilateral</option>
-                    </select>
-                    <select name="practica" class="practicas">
-                        <option value="" disabled selected>-</option>
-                        <option value="180104">180104 - Ecografia Tocoginecologica</option>
-                        <option value="180106">180106 - Ecografia Mamaria</option>
-                        <option value="180112">180112 - Ecografia Abdominal</option>
-                        <option value="180116">180116 - Ecografia Renal Bilateral</option>
-                    </select>
-                    <select name="practica" class="practicas">
-                        <option value="" disabled selected>-</option>
-                        <option value="180104">180104 - Ecografia Tocoginecologica</option>
-                        <option value="180106">180106 - Ecografia Mamaria</option>
-                        <option value="180112">180112 - Ecografia Abdominal</option>
-                        <option value="180116">180116 - Ecografia Renal Bilateral</option>
-                    </select>
-                    <select name="practica" class="practicas">
-                        <option value="" disabled selected>-</option>
-                        <option value="180104">180104 - Ecografia Tocoginecologica</option>
-                        <option value="180106">180106 - Ecografia Mamaria</option>
-                        <option value="180112">180112 - Ecografia Abdominal</option>
-                        <option value="180116">180116 - Ecografia Renal Bilateral</option>
-                    </select>
-                    <div>
-                        <p id="resultado"></p>
-                    </div>
-                    <div>
-                        <button id="autorizar">Autorizar Prácticas</button>
-                    </div>
-                </form>
-            </form>
+        <section class="selectorObraSocial">
+            <section class="selectorObraSocial__particular">
+                <span>El paciente tiene Obra Social?</span>
+                <input type="radio" name="pteParticular" id="pteConObraSocial"><label for="pteConObraSocial">SI</label>
+                <input type="radio" name="pteParticular" id="pteSinObraSocial"><label for="pteSinObraSocial">NO</label>
+                <button id="continuar1">continuar</button>
+            </section>
+            <section id="selectorObraSocial__obraSocial"></section>
+        </section>
+
+        <section id="practicas" style="display: flex;flex-direction: column;align-items: center;width: 95vw;padding: 2.5vw;">
+
         </section>
     </main>
 
@@ -93,8 +56,8 @@
     </footer>
 
 
-    <script src="./js/luxon.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="./js/main.js"></script>
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

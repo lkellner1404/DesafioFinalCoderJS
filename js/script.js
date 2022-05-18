@@ -299,5 +299,5 @@ const autorizar = () => {
     valorFinal = valorFinal.toFixed(2);
     console.table(final);
     console.log(`El valor a abonar por el paciente es de ${valorFinal}`)
-    swal(`El valor a abonar por el paciente es de ${valorFinal}`);
+    swal({title:`El valor a abonar por el paciente es de ${valorFinal}`});
 }

@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   font-family: "Quicksand", "Raleway", "Montserrat", sans-serif;
-  background-color: #EEEEEE;
 }
 
 html {
-  height: 100vh;
+  background-color: #EEEEEE;
+  text-align: center;
 }
 
 header {
@@ -47,7 +47,8 @@ header form section span.welcome {
 }
 
 main {
-  text-align: center;
+  width: 80vw;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,14 +69,21 @@ main h1 {
 }
 
 main p {
+  width: 70ch;
   margin-bottom: 1rem;
 }
 
-main #newMain {
-  display: none;
+main .selectorObraSocial__particular, main #selectorObraSocial__obraSocial div {
+  width: 70ch;
+  margin-bottom: 1rem;
 }
 
-main #newMain #formPracticas {
+main .selectorObraSocial__particular div, main #selectorObraSocial__obraSocial div div {
+  margin-bottom: 1rem;
+}
+
+main #practicas {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,19 +91,22 @@ main #newMain #formPracticas {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-main #newMain #formPracticas div {
-  margin-bottom: 10px;
+main #practicas > #masterDiv {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
 }
 
-main #newMain #formPracticas select {
-  margin-bottom: 7px;
-}
-
-main #newMain #resultado {
-  font-size: 2rem;
-  margin: 10px auto;
+main #practicas > #masterDiv table {
+  text-align: start;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .swal-title {
@@ -135,53 +146,8 @@ button:active {
           transform: translateY(-1px);
 }
 
-button#autorizar, button#ctaAutorizar {
+button#autorizar {
   margin-top: 50px;
-}
-
-button#mas {
-  color: black;
-  border: 1px solid black;
-  padding: 0.25em;
-  background-color: orangered;
-  border-radius: 100%;
-  margin: 0px 6px 0px 0px;
-  opacity: 1;
-  cursor: pointer;
-}
-
-button#mas i {
-  background-color: inherit;
-}
-
-button#mas:hover {
-  -webkit-transform: none;
-          transform: none;
-}
-
-button#menos {
-  color: black;
-  border: 1px solid black;
-  padding: 0.25em;
-  background-color: lightskyblue;
-  border-radius: 100%;
-  margin: 0px 6px 0px 0px;
-  opacity: 1;
-  cursor: pointer;
-}
-
-button#menos i {
-  background-color: inherit;
-}
-
-button#menos:hover {
-  -webkit-transform: none;
-          transform: none;
-}
-
-button#ctaAutorizar {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .footer {

@@ -1,7 +1,6 @@
 let codigos = [];
 let arrayBuscar = [];
 let parcial = [];
-let final = [];
 let valorFinal;
 let obraSocialSelect;
 let obraSocial;
@@ -62,10 +61,6 @@ const cambioLogin = (element) =>{
 
 loginStorage && cambioLogin(loginStorage);
 
-// if (loginStorage){
-//     cambioLogin(loginStorage);
-// } 
-
 loginBtn.onclick = (e) => {
     e.preventDefault();
     cambioLogin(usuario.value);
@@ -98,12 +93,14 @@ const cambioSi = async () => {
     try {
         selectorObraSocial__obraSocial.innerHTML += 
         `
-        <label for="obraSocial">Elija la opcion correcta:</label>
-        <select name="obraSocial" id="obraSocial">
-        <option value="0">Obra Social sin cobro de coseguro</option>
-        <option value="1">Obra Social con cobro de coseguro</option>
-        <option value="2">PAMI</option>
-        </select>
+        <div>
+            <label for="obraSocial">Elija la opcion correcta:</label>
+            <select name="obraSocial" id="obraSocial">
+                <option value="0">Obra Social sin cobro de coseguro</option>
+                <option value="1">Obra Social con cobro de coseguro</option>
+                <option value="2">PAMI</option>
+            </select>
+        </div>
         <button onclick="programa()" id="continuar2">continuar</button>
         <button onclick="reload()" id="volver1">volver atras</button>
         `;
@@ -121,10 +118,12 @@ const cambioNo = async () => {
     try {
         selectorObraSocial__obraSocial.innerHTML += 
         `
-        <label for="obraSocial">Elija la opcion correcta:</label>
-        <select name="obraSocial" id="obraSocial" disabled>
-            <option value="-1">Paciente Particular</option>
-        </select>
+        <div>
+            <label for="obraSocial">Elija la opcion correcta:</label>
+            <select name="obraSocial" id="obraSocial" disabled>
+                <option value="-1">Paciente Particular</option>
+            </select>
+        </div>
         <button onclick="programa()" id="continuar2">continuar</button>
         <button onclick="reload()" id="volver1">volver atras</button>
         `;
@@ -138,9 +137,7 @@ const cambioNo = async () => {
 }
 
 const desvanecerBtn = (e) =>{
-    e.style.opacity = "0";
-    e.style.transition = "none";
-    e.style.pointerEvents = "none";
+    e.style.display = "none";
 }
 
 const reload = () => {
@@ -207,14 +204,14 @@ const programa = () => {
 const displayPrograma = () => {
     let masterDiv = document.createElement("div");
     masterDiv.setAttribute("id","masterDiv");
-    masterDiv.style.display = "flex";
-    masterDiv.style.flexDirection = "direction;"
-    masterDiv.style.width = "95vw";
-    masterDiv.style.paddingInline = "2.5vw";
+    // masterDiv.style.display = "flex";
+    // masterDiv.style.flexDirection = "direction;"
+    // masterDiv.style.width = "95vw";
+    // masterDiv.style.paddingInline = "2.5vw";
 
     let divPrimario = document.createElement("div");
     divPrimario.setAttribute("id","tabla__practicas");
-    divPrimario.style.flexGrow = "10";
+    // divPrimario.style.flexGrow = "10";
     divPrimario.innerHTML = 
     `
     <table id="tabla__practicas--tabla">
@@ -228,7 +225,7 @@ const displayPrograma = () => {
     `;
     let divSecundario = document.createElement("div");
     divSecundario.setAttribute("id","carrito__practicas");
-    divSecundario.style.flexGrow = "1";
+    // divSecundario.style.flexGrow = "1";
     divSecundario.innerHTML = 
     `
     <div id="carrito"></div>

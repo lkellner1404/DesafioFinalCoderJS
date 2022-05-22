@@ -1,47 +1,55 @@
 @import 'vars';
-@import 'mixin';
 
 * {
     margin: 0;
     padding: 0;
     font-family: $fontFamily;
-    background-color: $white;
 }
 html{
-    height: 100vh;
+    background-color: $white;
+    text-align: center;
 }
 @import 'header';
 
 main{
-    text-align: center;
+    width: 80vw;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     h1{
-        // display: inline;
         margin-bottom: 1rem;
     }
     p{
-        // display: inline;
+        width: 70ch;
         margin-bottom: 1rem;
     }
-    #newMain{
-        display: none;
-        #formPracticas{
-            display: flex;
-            flex-direction: column;
-            div{
-                margin-bottom: 10px;
-            }
-            select{
-                margin-bottom: 7px;
+    .selectorObraSocial{
+        &__particular{
+            width: 70ch;
+            margin-bottom: 1rem;
+            div {
+                margin-bottom: 1rem;
             }
         }
-        #resultado{
-            font-size: 2rem;
-            margin: 10px auto;
-            
+    }
+    #selectorObraSocial__obraSocial div{
+        @extend .selectorObraSocial__particular;
+    }
+    #practicas{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &>#masterDiv{
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            table{
+                text-align: start;
+                width: 100%;
+                margin: 0 auto;
+            }
         }
     }
 }

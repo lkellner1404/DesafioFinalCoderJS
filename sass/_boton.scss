@@ -25,27 +25,4 @@ button {
     &#autorizar{
         margin-top: 50px;
     }
-    &#mas{
-        @include iconos_mas_menos(orangered);
-        i{
-            background-color: inherit;
-        }
-        &:hover{
-            transform: none;
-        }
-    }
-    &#menos{
-        @include iconos_mas_menos(lightskyblue);
-        i{
-            background-color: inherit;
-        }
-        &:hover{
-            transform: none;
-        }
-    }
-    &#ctaAutorizar{
-        @extend #autorizar;
-        opacity: 0;
-        pointer-events: none;
-    }
 }

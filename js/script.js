@@ -65,8 +65,6 @@ loginBtn.onclick = (e) => {
     e.preventDefault();
     cambioLogin(usuario.value);
     localStorage.setItem("user",usuario.value);
-    //cambioMain();
-    //obtenerCodigos();
 }
 
 const logout = () =>{
@@ -204,14 +202,8 @@ const programa = () => {
 const displayPrograma = () => {
     let masterDiv = document.createElement("div");
     masterDiv.setAttribute("id","masterDiv");
-    // masterDiv.style.display = "flex";
-    // masterDiv.style.flexDirection = "direction;"
-    // masterDiv.style.width = "95vw";
-    // masterDiv.style.paddingInline = "2.5vw";
-
     let divPrimario = document.createElement("div");
     divPrimario.setAttribute("id","tabla__practicas");
-    // divPrimario.style.flexGrow = "10";
     divPrimario.innerHTML = 
     `
     <table id="tabla__practicas--tabla">
@@ -225,7 +217,6 @@ const displayPrograma = () => {
     `;
     let divSecundario = document.createElement("div");
     divSecundario.setAttribute("id","carrito__practicas");
-    // divSecundario.style.flexGrow = "1";
     divSecundario.innerHTML = 
     `
     <div id="carrito"></div>
@@ -282,7 +273,6 @@ const alCarrito = () =>{
 
 const limpiarCarrito = () =>{
     parcial = [];
-    // final = [];
     carrito.innerHTML = 
     `
     <table id="carrito__tabla">
@@ -297,12 +287,16 @@ const limpiarCarrito = () =>{
 // ------ FINALIZA PROCESO ------
 
 const autorizar = () => {
-    // const tablita = document.querySelectorAll(".practicasFinal")
-    // tablita.forEach( el => {
-    //     const codigosMapeados = codigos.map(cod => cod).filter(prestacion => prestacion.codigo == `${el.textContent}`);
-    //     // const codigoBuscado = codigosMapeados.filter(prestacion => prestacion.codigo == `${el.textContent}`);
-    //     final.push(...codigosMapeados);
-    // })
+    /*
+    ACA UTILIZABA MAP PERO AL SUMARLE IVA O DESCONTAR PARA PAMI ME CAMBIABA EL VALOR DEL ARRAY ORIGINAL, DESCONOZCO SI ES POR USAR UNA CLASE, TENDRE QUE INVESTIGAR.
+
+    const tablita = document.querySelectorAll(".practicasFinal")
+    tablita.forEach( el => {
+        const codigosMapeados = codigos.map(cod => cod).filter(prestacion => prestacion.codigo == `${el.textContent}`);
+        // const codigoBuscado = codigosMapeados.filter(prestacion => prestacion.codigo == `${el.textContent}`);
+        final.push(...codigosMapeados);
+    })
+    */
     valorFinal = parcial;
     calcularSegunObraSocial();
     console.table(parcial);

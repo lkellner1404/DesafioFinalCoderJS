@@ -104,9 +104,11 @@ main #practicas > #masterDiv {
 }
 
 main #practicas > #masterDiv table {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding-top: 10px;
   text-align: start;
   width: 100%;
-  margin: 0 auto;
 }
 
 .swal-title {
@@ -144,10 +146,6 @@ button:hover {
 button:active {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
-}
-
-button#autorizar {
-  margin-top: 50px;
 }
 
 .footer {

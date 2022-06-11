@@ -12,48 +12,49 @@
     <link rel="stylesheet" href="./sass/style.css">
 </head>
 <body>
-    <header>
-        <a href="#">
-            <img src="./img/logo.svg" alt="">
-        </a>
+    <div class="fixer">
+        <header>
+            <a href="#">
+                <img src="./img/logo.svg" alt="">
+            </a>
 
-        <form class="login" action="">
-            <section id="loginInicial">
-                <input type="text" name="" id="username" placeholder="Nombre" required>
-                <input type="password" name="" id="password" placeholder="Contraseña" required>
-                <div class="login__button">
-                    <button id="loginBtn">Ingresar</button>
-                </div>
+            <form class="login" action="">
+                <section id="loginInicial">
+                    <input type="text" name="" id="username" placeholder="Nombre" required>
+                    <input type="password" name="" id="password" placeholder="Contraseña" required>
+                    <div class="login__button">
+                        <button id="loginBtn">Ingresar</button>
+                    </div>
+                </section>
+            </form>
+        </header>
+        
+        <main>
+            <section id="originalMain">
+                <h1>Bienvenido/a a Megadiagnóstico!</h1>
+                <p>Este es un simulador que calcula el monto a abonar por el paciente en un centro medico. Utiliza una base de datos estática con datos precargados, cuenta con 2 servicios y la información de las Obras Sociales está generalizada para facilitar los ejemplos.</p>
             </section>
-        </form>
-    </header>
-    
-    <main>
-        <section id="originalMain">
-            <h1>Bienvenido/a a Megadiagnóstico!</h1>
-            <p>Este es un simulador que calcula el monto a abonar por el paciente en un centro medico. Utiliza una base de datos estática con datos precargados, cuenta con 2 servicios y la información de las Obras Sociales está generalizada para facilitar los ejemplos.</p>
-        </section>
-        <section class="selectorObraSocial">
-            <section class="selectorObraSocial__particular">
-                <div>
-                    <span>El paciente tiene Obra Social?</span>
-                    <input type="radio" name="pteParticular" id="pteConObraSocial"><label for="pteConObraSocial">SI</label>
-                    <input type="radio" name="pteParticular" id="pteSinObraSocial"><label for="pteSinObraSocial">NO</label>
-                </div>
-                <button id="continuar1">continuar</button>
+            <section class="selectorObraSocial">
+                <section class="selectorObraSocial__particular">
+                    <div>
+                        <span>El paciente tiene Obra Social?</span>
+                        <input type="radio" name="pteParticular" id="pteConObraSocial"><label for="pteConObraSocial">SI</label>
+                        <input type="radio" name="pteParticular" id="pteSinObraSocial"><label for="pteSinObraSocial">NO</label>
+                    </div>
+                    <button id="continuar1">continuar</button>
+                </section>
+                <section id="selectorObraSocial__obraSocial"></section>
             </section>
-            <section id="selectorObraSocial__obraSocial"></section>
-        </section>
 
-        <section id="practicas">
+            <section id="practicas">
 
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <footer class="footer">
-        <p class="footer__text">Leonardo Kellner &copy;2022</p>
-    </footer>
-
+        <footer class="footer">
+            <p class="footer__text">Leonardo Kellner &copy;2022 - Para  JS Comisión 30330 - Prof: Yael Roufe - Tutor: Yoelys Figueredo Padrón</p>
+        </footer>
+    </div>
 
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

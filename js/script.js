@@ -192,6 +192,8 @@ const programa = () => {
                 document.getElementById("tabla__practicas--tabla").appendChild(linea);
             }
         });
+        // document.querySelector("footer").style.position = "initial";
+        // document.querySelector("footer").style.textAlign = "initial";
     }
     practicas.appendChild(servicioSelect);
     desvanecerBtn(document.getElementById("continuar2"));

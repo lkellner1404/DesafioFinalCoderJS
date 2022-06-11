@@ -11,9 +11,15 @@ html{
 }
 @import 'header';
 
+.fixer {
+    position: relative;
+    min-height: 100vh;
+}
+
 main{
     width: 80vw;
     margin: 0 auto;
+    padding-bottom: 3em;
     display: flex;
     flex-direction: column;
     justify-content: center;

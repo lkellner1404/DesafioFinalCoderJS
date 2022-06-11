@@ -46,9 +46,15 @@ header form section span.welcome {
   display: inline-block;
 }
 
+.fixer {
+  position: relative;
+  min-height: 100vh;
+}
+
 main {
   width: 80vw;
   margin: 0 auto;
+  padding-bottom: 3em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -149,8 +155,9 @@ button:active {
 }
 
 .footer {
-  margin: 1.5rem;
   position: absolute;
   bottom: 0;
+  width: 100%;
+  height: 2.5em;
 }
 /*# sourceMappingURL=style.css.map */
